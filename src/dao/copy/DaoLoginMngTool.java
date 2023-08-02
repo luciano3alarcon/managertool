@@ -4,20 +4,21 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import connection.SingleConnection;
+import connection.MngToolSingleConnection;
 
 public class DaoLoginMngTool {
 
 	private static Connection connection;
 
 	public DaoLoginMngTool() {
-		connection = SingleConnection.getConnection();
+		connection = MngToolSingleConnection.getConnection();
 	}
 
-	public boolean passwordValidierung(String username, String password) throws Exception {
+	public boolean passwordValidierung(String servicemanager, String password) throws Exception {
 
-		String sqlStatement = "SELECT * FROM managertool WHERE " + "login = '" + username + "' and password = '"
+		String sqlStatement = "SELECT * FROM datalogin WHERE servmanager = '" + servicemanager + "' and password = '"
 				+ password + "'";
+		
 		PreparedStatement prepStatement = connection.prepareStatement(sqlStatement);
 		ResultSet resultSet = prepStatement.executeQuery();
 

@@ -3,21 +3,20 @@ package connection;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class SingleConnection {
+public class MngToolSingleConnection {
 
-//	Die URL-Verbidung mit PostGresql verläuft in WIN 11 übers Port 5430. Das Port wurde von mir neu konfiguriert
-	private static String dataBank = "jdbc:postgresql://locahost:5430/managertool?autoReconnect=true";
+//	Die URL-Verbidung mit PostGresql verläuft in WIN 11 übers Port 5431. Das Port wurde von mir neu konfiguriert
+	private static String dataBank = "jdbc:postgresql://locahost:5431/managertool?autoReconnect=true";
 	private static String username = "postgres";
 	private static String password = "admin";
 	private static Connection connection = null;
 
 	static {
-
 		verbinden();
 	}
 
-	public SingleConnection() {
-
+	public MngToolSingleConnection() {
+		verbinden(); 
 	}
 
 	private static void verbinden() {
